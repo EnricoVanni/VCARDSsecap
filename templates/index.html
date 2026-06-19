@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#E8E6E1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F0F0E" media="(prefers-color-scheme: dark)">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="robots" content="noindex,nofollow">
+
+  <title>{{name}} — {{role}} · {{org}}</title>
+  <meta name="description" content="Digital business card di {{name}}, {{role}} presso {{org}}.">
+
+  <meta property="og:title" content="{{name}} · {{org}}">
+  <meta property="og:description" content="{{role}}">
+  <meta property="og:type" content="profile">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%231A1A1A'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #E8E6E1;
+      --ink: #1A1A1A;
+      --surface: #FFFFFF;
+      --accent: {{brandAccent}};
+      --muted: #6B6B6B;
+      --line: rgba(26, 26, 26, 0.10);
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0F0F0E; --ink: #F0EFEC; --surface: #1A1A19;
+        --accent: {{brandAccentDark}};
+        --muted: #8A8A87; --line: rgba(240, 239, 236, 0.10);
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--bg); color: var(--ink);
+      font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+      min-height: 100vh; min-height: 100dvh;
+      display: flex; justify-content: center;
+      padding: 28px 20px 40px;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+
+    main { width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 28px; }
+
+    .brand-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .brand-logo {
+      font-family: var(--font-display); font-weight: 700; font-size: 14px;
+      letter-spacing: -0.01em; color: var(--ink); text-decoration: none;
+    }
+    .eyebrow {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.10em;
+      color: var(--muted); text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .eyebrow::before {
+      content: ""; width: 7px; height: 7px;
+      background: var(--accent); border-radius: 50%;
+      animation: pulse 2s ease-out infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 var(--accent); }
+      70%  { box-shadow: 0 0 0 10px transparent; }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+
+    .medallion { width: 100%; max-width: 260px; aspect-ratio: 1; margin: 4px auto; }
+    .medallion svg { width: 100%; height: 100%; display: block; }
+    .med-ring { fill: none; stroke: var(--ink); stroke-opacity: 0.12; stroke-width: 1; }
+    .med-ping { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+    .med-core { fill: var(--ink); }
+    .med-mono {
+      fill: var(--bg); font-family: var(--font-display);
+      font-weight: 700; font-size: 28px; letter-spacing: -0.02em;
+    }
+
+    .identity { text-align: center; }
+    .name {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(30px, 7.5vw, 40px); letter-spacing: -0.025em;
+      line-height: 1.04; margin-bottom: 6px;
+    }
+    .role { font-size: 15px; color: var(--muted); }
+    .role b { color: var(--ink); font-weight: 500; }
+
+    .save-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 18px 24px;
+      background: var(--ink); color: var(--bg); border: none; border-radius: 100px;
+      font-family: var(--font-display); font-weight: 500; font-size: 15px;
+      letter-spacing: -0.005em; text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .save-btn:hover { opacity: 0.92; }
+    .save-btn:active { transform: scale(0.985); }
+    .save-btn svg { width: 18px; height: 18px; }
+
+    .details { display: flex; flex-direction: column; }
+    .row {
+      display: grid; grid-template-columns: 84px 1fr auto;
+      align-items: center; gap: 16px;
+      padding: 16px 4px; border-top: 1px solid var(--line);
+      text-decoration: none; color: var(--ink);
+      transition: padding-left 0.2s ease;
+    }
+    .row:last-child { border-bottom: 1px solid var(--line); }
+    .row .key {
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.10em; color: var(--muted);
+    }
+    .row .val { font-size: 15px; word-break: break-word; }
+    .row .arrow {
+      width: 16px; height: 16px; opacity: 0; color: var(--accent);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .row:hover { padding-left: 8px; }
+    .row:hover .arrow { opacity: 1; transform: translateX(2px); }
+
+    footer {
+      margin-top: 4px; text-align: center;
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+      .med-ping { display: none; }
+    }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand-row">
+      <a class="brand-logo" href="{{brandSite}}" target="_blank" rel="noopener">{{brandName}}</a>
+      <div class="eyebrow">NFC · tap detected</div>
+    </div>
+
+    <div class="medallion" aria-hidden="true">
+      <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+        <circle class="med-ring" cx="140" cy="140" r="132"/>
+        <circle class="med-ring" cx="140" cy="140" r="108"/>
+        <circle class="med-ring" cx="140" cy="140" r="84"/>
+
+        <circle class="med-ping" cx="140" cy="140" r="55" opacity="0">
+          <animate attributeName="r" from="55" to="132" dur="2.4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.55;0" dur="2.4s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="med-ping" cx="140" cy="140" r="55" opacity="0">
+          <animate attributeName="r" from="55" to="132" dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.55;0" dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="med-ping" cx="140" cy="140" r="55" opacity="0">
+          <animate attributeName="r" from="55" to="132" dur="2.4s" begin="1.6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.55;0" dur="2.4s" begin="1.6s" repeatCount="indefinite"/>
+        </circle>
+
+        {{centerBlock}}
+      </svg>
+    </div>
+
+    <div class="identity">
+      <h1 class="name">{{name}}</h1>
+      <p class="role"><b>{{role}}</b> · {{org}}</p>
+    </div>
+
+    <a class="save-btn" href="card.vcf" download="{{slug}}.vcf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+        <polyline points="17 21 17 13 7 13 7 21"/>
+        <polyline points="7 3 7 8 15 8"/>
+      </svg>
+      Salva contatto
+    </a>
+
+    <nav class="details">{{contactRows}}</nav>
+
+    <footer>{{brandName}} · NFC card</footer>
+  </main>
+</body>
+</html>

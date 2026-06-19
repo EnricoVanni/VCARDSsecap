@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:{{lastName}};{{firstName}};;;
+FN:{{name}}
+ORG:{{org}}
+TITLE:{{role}}
+TEL;TYPE=CELL,VOICE:{{phone}}
+EMAIL;TYPE=INTERNET,WORK:{{email}}
+URL:{{site}}
+{{extraFields}}
+NOTE:Salvato via NFC card · {{brandName}}
+END:VCARD

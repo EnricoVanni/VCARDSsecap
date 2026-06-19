@@ -1,0 +1,12 @@
+{
+  "name": "nfc-cards",
+  "version": "1.0.0",
+  "description": "Generatore statico di biglietti da visita NFC per dipendenti aziendali",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "node -e \"require('http').createServer((req,res)=>{const fs=require('fs'),path=require('path');let p=path.join('dist',req.url.split('?')[0]);if(fs.existsSync(p)&&fs.statSync(p).isDirectory())p=path.join(p,'index.html');if(!fs.existsSync(p)){res.writeHead(404);res.end('Not found');return}const ext=path.extname(p);const types={'.html':'text/html','.vcf':'text/vcard','.jpg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml'};res.writeHead(200,{'Content-Type':types[ext]||'text/plain'});fs.createReadStream(p).pipe(res)}).listen(8080,()=>console.log('▸ http://localhost:8080'))\""
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

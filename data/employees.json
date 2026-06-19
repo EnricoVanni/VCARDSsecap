@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "m.rossi",
+    "name": "Mario Rossi",
+    "role": "Chief Technology Officer",
+    "phone": "+393331234567",
+    "email": "m.rossi@azienda.it",
+    "site": "https://www.azienda.it",
+    "linkedin": "https://linkedin.com/in/mariorossi"
+  },
+  {
+    "slug": "g.bianchi",
+    "name": "Giulia Bianchi",
+    "role": "Head of Design",
+    "phone": "+393339876543",
+    "email": "g.bianchi@azienda.it",
+    "site": "https://www.azienda.it",
+    "linkedin": "https://linkedin.com/in/giuliabianchi",
+    "monogram": "GB"
+  },
+  {
+    "slug": "l.verdi",
+    "name": "Luca Verdi",
+    "role": "Sales Manager",
+    "phone": "+393335551234",
+    "email": "l.verdi@azienda.it",
+    "site": "https://www.azienda.it"
+  }
+]
