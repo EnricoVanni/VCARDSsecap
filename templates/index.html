@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0D4F9E" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0F0F0E" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0D4F9E">
   <meta name="format-detection" content="telephone=no">
   <meta name="robots" content="noindex,nofollow">
 
@@ -15,94 +14,155 @@
   <meta property="og:description" content="{{role}}">
   <meta property="og:type" content="profile">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%231A1A1A'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230D4F9E'/%3E%3Cpolygon fill='white' points='20,72 20,28 65,28 50,43 35,43 35,57 50,57'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* ============================================================
+       SECAP S.p.A. — Versione Blu
+       Brand Guidelines v1.0, Apr 2024
+       ============================================================ */
     :root {
-      --bg: #0D4F9E;
-      --ink: #1A1A1A;
-      --surface: #FFFFFF;
-      --accent: {{brandAccent}};
-      --muted: #6B6B6B;
-      --line: rgba(26, 26, 26, 0.10);
-      --font-display: 'Manrope', system-ui, sans-serif;
-      --font-body: 'Inter', system-ui, sans-serif;
-      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0D4F9E; --ink: #F0EFEC; --surface: #1A1A19;
-        --accent: {{brandAccentDark}};
-        --muted: #8A8A87; --line: rgba(240, 239, 236, 0.10);
-      }
+      --secap-blue:  #0D4F9E;
+      --bg:     var(--secap-blue);
+      --ink:    #FFFFFF;
+      --muted:  rgba(255, 255, 255, 0.65);
+      --line:   rgba(255, 255, 255, 0.18);
+      --font:   'Manrope', system-ui, -apple-system, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-text-size-adjust: 100%; }
 
     body {
-      background: var(--bg); color: var(--ink);
-      font-family: var(--font-body); font-size: 16px; line-height: 1.5;
-      min-height: 100vh; min-height: 100dvh;
-      display: flex; justify-content: center;
-      padding: 28px 20px 40px;
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 20px 40px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    main { width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 28px; }
+    main {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
 
-    .brand-row {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    /* Brand bar — logo Secap bianco, top-left */
+    .brand-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
     .brand-logo {
-      font-family: var(--font-display); font-weight: 700; font-size: 14px;
-      letter-spacing: -0.01em; color: var(--ink); text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      height: 22px;
     }
+    .brand-logo svg {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+
     .eyebrow {
-      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.10em;
-      color: var(--muted); text-transform: uppercase;
-      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .eyebrow::before {
-      content: ""; width: 7px; height: 7px;
-      background: var(--accent); border-radius: 50%;
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #FFFFFF;
+      border-radius: 50%;
       animation: pulse 2s ease-out infinite;
     }
     @keyframes pulse {
-      0%   { box-shadow: 0 0 0 0 var(--accent); }
+      0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
       70%  { box-shadow: 0 0 0 10px transparent; }
       100% { box-shadow: 0 0 0 0 transparent; }
     }
 
-    .medallion { width: 100%; max-width: 260px; aspect-ratio: 1; margin: 4px auto; }
+    /* Medaglione NFC */
+    .medallion {
+      width: 100%;
+      max-width: 240px;
+      aspect-ratio: 1;
+      margin: 8px auto 0;
+    }
     .medallion svg { width: 100%; height: 100%; display: block; }
-    .med-ring { fill: none; stroke: var(--ink); stroke-opacity: 0.12; stroke-width: 1; }
-    .med-ping { fill: none; stroke: var(--accent); stroke-width: 1.5; }
-    .med-core { fill: var(--ink); }
+    .med-ring { fill: none; stroke: #FFFFFF; stroke-opacity: 0.18; stroke-width: 1; }
+    .med-ping { fill: none; stroke: #FFFFFF; stroke-width: 1.5; }
+    .med-core { fill: #FFFFFF; }
     .med-mono {
-      fill: var(--bg); font-family: var(--font-display);
-      font-weight: 700; font-size: 28px; letter-spacing: -0.02em;
+      fill: var(--secap-blue);
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: -0.02em;
     }
 
+    /* Identità */
     .identity { text-align: center; }
     .name {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: clamp(30px, 7.5vw, 40px); letter-spacing: -0.025em;
-      line-height: 1.04; margin-bottom: 6px;
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: clamp(30px, 7.5vw, 38px);
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      margin-bottom: 8px;
+      color: var(--ink);
     }
-    .role { font-size: 15px; color: var(--muted); }
-    .role b { color: var(--ink); font-weight: 500; }
+    .role {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .role b {
+      color: var(--ink);
+      font-weight: 500;
+    }
 
+    /* CTA */
     .save-btn {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      width: 100%; padding: 18px 24px;
-      background: var(--ink); color: var(--bg); border: none; border-radius: 100px;
-      font-family: var(--font-display); font-weight: 500; font-size: 15px;
-      letter-spacing: -0.005em; text-decoration: none; cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 24px;
+      background: #FFFFFF;
+      color: var(--secap-blue);
+      border: none;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: -0.005em;
+      text-decoration: none;
+      cursor: pointer;
       transition: transform 0.15s ease, opacity 0.15s ease;
       -webkit-tap-highlight-color: transparent;
     }
@@ -110,31 +170,49 @@
     .save-btn:active { transform: scale(0.985); }
     .save-btn svg { width: 18px; height: 18px; }
 
+    /* Lista contatti */
     .details { display: flex; flex-direction: column; }
     .row {
-      display: grid; grid-template-columns: 84px 1fr auto;
-      align-items: center; gap: 16px;
-      padding: 16px 4px; border-top: 1px solid var(--line);
-      text-decoration: none; color: var(--ink);
+      display: grid;
+      grid-template-columns: 92px 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 4px;
+      border-top: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--ink);
       transition: padding-left 0.2s ease;
     }
     .row:last-child { border-bottom: 1px solid var(--line); }
     .row .key {
-      font-family: var(--font-mono); font-size: 11px;
-      text-transform: uppercase; letter-spacing: 0.10em; color: var(--muted);
+      font-family: var(--font);
+      font-weight: 500;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
     }
-    .row .val { font-size: 15px; word-break: break-word; }
+    .row .val { font-size: 15px; word-break: break-word; font-weight: 400; }
     .row .arrow {
-      width: 16px; height: 16px; opacity: 0; color: var(--accent);
+      width: 16px;
+      height: 16px;
+      opacity: 0;
+      color: #FFFFFF;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
     .row:hover { padding-left: 8px; }
     .row:hover .arrow { opacity: 1; transform: translateX(2px); }
 
+    /* Footer */
     footer {
-      margin-top: 4px; text-align: center;
-      font-family: var(--font-mono); font-size: 10px;
-      letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase;
+      margin-top: 8px;
+      text-align: center;
+      font-family: var(--font);
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      text-transform: uppercase;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -145,16 +223,39 @@
       }
       .med-ping { display: none; }
     }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    :focus-visible {
+      outline: 2px solid #FFFFFF;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
   <main>
-    <div class="brand-row">
-      <a class="brand-logo" href="{{brandSite}}" target="_blank" rel="noopener">{{brandName}}</a>
+
+    <!-- Brand bar -->
+    <div class="brand-bar">
+      <a class="brand-logo" href="{{brandSite}}" target="_blank" rel="noopener" aria-label="Secap S.p.A.">
+        <svg viewBox="0 0 1000 247" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g>
+            <g>
+              <path fill="#F4F4F4" d="M316.8,120.3h-31.2c-6.4,0-11.6-5.2-11.6-11.6v-3.3c0-6.4,5.2-11.6,11.6-11.6h70.6V66h-70.6c-21.8,0-39.4,17.7-39.4,39.4v3.3c0,21.8,17.7,39.4,39.4,39.4h31.2c6.4,0,11.6,5.2,11.6,11.6s-5.2,11.6-11.6,11.6h-68.9v27.8h68.9c21.8,0,39.4-17.7,39.4-39.4S338.5,120.3,316.8,120.3L316.8,120.3z"/>
+              <path fill="#F4F4F4" d="M371,107.8v49.6c0,23.1,18.8,41.8,41.8,41.8h73.7v-27.8h-73.7c-7.7,0-14-6.3-14-14v-10.9h85.6v-27.8h-85.6v-10.9c0-7.7,6.3-14,14-14h73.7V66h-73.7C389.8,66,371,84.8,371,107.8L371,107.8z"/>
+              <path fill="#F4F4F4" d="M499.4,107.8v49.6c0,23.1,18.8,41.8,41.8,41.8h73.7v-27.8h-73.7c-7.7,0-14-6.3-14-14v-49.6c0-7.7,6.3-14,14-14h73.7V66h-73.7C518.2,66,499.4,84.7,499.4,107.8L499.4,107.8z"/>
+              <path fill="#F4F4F4" d="M875.7,66h-78.2v133.2h27.8v-43.3h50.4c24.8,0,45-20.2,45-45S900.5,66,875.7,66L875.7,66z M875.7,128.1h-50.4V93.8h50.4c9.5,0,17.1,7.7,17.1,17.1S885.2,128.1,875.7,128.1L875.7,128.1z"/>
+              <path fill="#F4F4F4" d="M698.1,68.3l-70.9,131h31.6l12.3-22.8h74.1l12.6,22.8h31.8l-72.6-131C712.9,60.7,702.2,60.8,698.1,68.3L698.1,68.3z M686.2,148.6l21.6-39.8l22.1,39.8H686.2z"/>
+            </g>
+            <g>
+              <polygon fill="#F4F4F4" points="195.6,170.2 142.5,170.2 131.2,170.2 108.1,170.2 108.1,147.2 108.1,135.8 108.1,82.7 161.2,82.7 190,53.9 79.3,53.9 79.3,199 224.4,199 224.4,88.3 195.6,117.1"/>
+              <polygon fill="#F4F4F4" points="204.1,53.9 175.3,82.7 151.9,106.1 151.9,146.8 195.6,103.1 224.4,74.3 250.9,47.8 210.2,47.8"/>
+            </g>
+          </g>
+        </svg>
+      </a>
       <div class="eyebrow">NFC · tap detected</div>
     </div>
 
+    <!-- Medaglione NFC -->
     <div class="medallion" aria-hidden="true">
       <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
         <circle class="med-ring" cx="140" cy="140" r="132"/>
@@ -178,11 +279,13 @@
       </svg>
     </div>
 
+    <!-- Identità -->
     <div class="identity">
       <h1 class="name">{{name}}</h1>
       <p class="role"><b>{{role}}</b> · {{org}}</p>
     </div>
 
+    <!-- CTA -->
     <a class="save-btn" href="card.vcf" download="{{slug}}.vcf">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
@@ -192,6 +295,7 @@
       Salva contatto
     </a>
 
+    <!-- Dettagli contatto -->
     <nav class="details">{{contactRows}}</nav>
 
     <footer>{{brandName}} · NFC card</footer>
